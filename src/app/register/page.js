@@ -10,7 +10,7 @@ export default function PageSingup() {
     };
 
     const request = await fetch(
-      "http://localhost:3000/api/usuarios/createUsuarios",
+      "http://localhost:3000/api/register",
       {
         method: "POST",
         headers: { "Content-type": "application/json" },

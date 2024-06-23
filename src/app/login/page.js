@@ -8,7 +8,7 @@ export default function PageLogin() {
       password: formData.get("password"),
     };
       const request = await fetch(
-        'http://localhost:3000/api/usuarios/getUsuarios',
+        'http://localhost:3000/api/login',
         {
           method: "POST",
           headers: { "Content-type": "application/json" },

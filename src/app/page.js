@@ -1,115 +1,129 @@
-//comentario de prueba
-
-import Image from "next/image";
+"use client";
+import useCategorias from './categorias/useCategorias';
 
 export default function Home() {
+
+  const categorias = useCategorias();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="bg-gray-100">
+      <div className="py-6">
+        <form className="max-w-7xl mx-auto flex">
+          <input
+            type="text"
+            className="flex-grow border border-gray-300 rounded-l-md p-2 text-gray-900"
+            placeholder="Buscar productos..." />
+          <button
+            type="submit"
+            className="bg-cyan-600 text-white p-2 rounded-r-md hover:bg-cyan-800"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+            Buscar
+          </button>
+        </form>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+  <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="flex">
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/categoria_auricular.jpg"
+          alt="Transistor"
+        />
+      </div>
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/categoria_gabinete.jpg"
+          alt="Transistor"
         />
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/caategoria_monitor.jpg"
+          alt="Tuple"
+        />
       </div>
-    </main>
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/categoria_mouse.jpg"
+          alt="SavvyCal"
+        />
+      </div>
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/categoria_placa-de-video.jpg"
+          alt="Statamic"
+        />
+      </div>
+      <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
+        <img
+          className="max-h-12 w-full object-contain"
+          src="/images/categoria_teclado.jpg"
+          alt="Statamic"
+        />
+      </div>
+    </div>
+  </div>
+
+      <div className="container mx-auto py-12 ocultarMayorista">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+          <div className="pr-4 pl-7">
+            <div className="bg-white border-2 border-black shadow-md p-4 text-center">
+              <div className="block-features__icon  flex items-center justify-center">
+                <img width="64" height="64" src="https://img.icons8.com/wired/64/truck.png" alt="truck" />
+              </div>
+
+              <div class="block-features__content">
+                <div className="block-features__title text-xl font-bold mb-2" data-ar="Realizamos envios" data-br="Fazemos envios" data-en="We make shipments">Realizamos envios</div>
+                <h1 className="text-black font-semibold">Realizamos Envios</h1>
+                <div className="text-gray-600">
+                  <span data-ar="Conocé nuestros medios de envios disponibles">Conocé nuestros medios de envios disponibles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-white border-2 border-black  shadow-md p-4 text-center">
+              <div className="block-features__icon flex items-center justify-center">
+                <img width="64" height="64" src="https://img.icons8.com/ios/100/bank-card-back-side--v1.png" alt="bank-card-back-side--v1" />
+              </div>
+              <div class="block-features__content">
+                <div className="block-features__title text-xl font-bold mb-2" data-ar="Paga tus compras aquí" data-br="Pague suas compras aqui" data-en="Pay your purchases here">Paga tus compras aquí</div>
+                <h1 className="text-black font-semibold">Paga tus compras aquí</h1>
+                <div className="block-features__subtitle text-gray-600">
+                  <span data-ar="Conocé todos los medios de pagos disponibles">Conocé todos los medios de pagos disponibles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-7">
+            <div className="bg-white border-2 border-black shadow-md p-4 text-center">
+              <div className="block-features__icon flex items-center justify-center">
+                <img width="64" height="64" src="https://img.icons8.com/ios/100/customer-support--v1.png" alt="customer-support--v1" />
+              </div>
+              <div class="block-features__content">
+                <div className="block-features__title text-xl font-bold mb-2" data-ar="Soporte" data-br="Apoio, suporte" data-en="Support">Soporte</div>
+                <div className="block-features__subtitle text-gray-600">
+                  <h1 className="text-black font-semibold">Soporte</h1>
+                  <span data-ar="Comunícate con nosotros">Comunícate con nosotros</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+
   );
 }

@@ -1,34 +1,54 @@
 "use client";
-
-import { useRouter } from "next/navigation";
-import handlerLogin from "./handlerLogin";
 import { useState } from "react";
 
 export default function PageLogin() {
-  const [error, setError] = useState(null);
-  const router = useRouter();
+  const [token, setToken] = useState(null); // Estado para almacenar el token
 
-  async function handleSubmit(event) {
+  const handleLogin = async (event) => {
     event.preventDefault();
+
     const formData = new FormData(event.target);
+    const user = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
 
     try {
-      // Llama a la función para obtener el token
-      const token = await handlerLogin(formData);
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
 
-      // Guarda el token en localStorage
-      if (typeof window !== "undefined") {
-        localStorage.setItem("authToken", token);
-        console.log("Token guardado en localStorage.");
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
       }
 
-      // Redirige a la página principal después del login
-      router.push("/");
-    } catch (err) {
-      console.error("Error durante el login:", err);
-      setError("No se pudo iniciar sesión. Por favor, inténtalo de nuevo.");
+      const data = await response.json();
+
+      if (data.success === false) {
+        console.error("Error de logeo:", data.error);
+      } else {
+        const authToken = data.token;
+
+        // Guardar el token en el estado local
+        setToken(authToken);
+
+        // Opcional: Guardar el token en localStorage si estás en el cliente
+        if (typeof window !== "undefined") {
+          localStorage.setItem("authToken", authToken);
+          console.log("Token guardado en localStorage.");
+        }
+
+        // Redirigir a la página principal u otra página después del inicio de sesión
+        // router.push("/"); // Si estás usando useRouter de Next.js
+      }
+    } catch (error) {
+      console.error("Error durante el inicio de sesión:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -45,7 +65,7 @@ export default function PageLogin() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit} method="POST">
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label
                 htmlFor="email"

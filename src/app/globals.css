@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.slick-slide > div {
+.slick-slide>div {
   margin: 0 10px;
 }
 
@@ -22,16 +22,109 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Categories */
+.section {
+  width: 90%;
+  margin: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleSection>h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.titleSection>.breadcrumbs>p {
+  color: #6d6e6e;
+}
+
+.crud {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.actionCrud {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.inputCRUD {
+  width: 75%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #101010;
+  cursor: pointer;
+}
+
+.editInputCRUD {
+  width: 35% !important;
+}
+
+.inputAddUser {
+  width: 22% !important;
+}
+
+.inputObtainAll {
+  width: 73% !important;
+}
+
+.editInputCRUDUser {
+  width: 25% !important;
+}
+
+.buttonCrud {
+  padding: 15px;
+  width: 25% !important;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: #101010;
+  color: #f2f2f2;
+  cursor: pointer;
+  width: fit-content !important;
+}
+
+.buttonCrud:hover {
+  background-color: #494949;
+}
+
+.fw {
+  width: 100% !important;
+}
+
+
+/* Users */
+.crudUsers {
+  align-items: center;
+}
+
+.inputUser {
+  width: 96% !important;
+}
+
+.buttonUser {
+  width: 100% !important;
 }

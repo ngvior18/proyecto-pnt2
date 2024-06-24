@@ -69,6 +69,7 @@ export default function Home() {
             />
           </div>
         </div>
+
       </div>
 
       <div className="pr-4 pl-7">
@@ -76,6 +77,7 @@ export default function Home() {
           <h1 className="text-black font-bold text-xl">Productos Destacados</h1>
           <ProdDestacados />
         </div>
+
       </div>
 
       <div className="container mx-auto py-12 ocultarMayorista">
@@ -91,7 +93,9 @@ export default function Home() {
                 />
               </div>
 
+
               <div class="block-features__content">
+
                 <div
                   className="block-features__title text-xl font-bold mb-2"
                   data-ar="Realizamos envios"

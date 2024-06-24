@@ -41,7 +41,7 @@ export default function PageLogin() {
           localStorage.setItem("authToken", authToken);
           console.log("Token guardado en localStorage.");
         }
-
+        redirect(`/`);
         // Redirigir a la página principal u otra página después del inicio de sesión
         // router.push("/"); // Si estás usando useRouter de Next.js
       }

@@ -43,7 +43,7 @@ export default function navLayout() {
         >
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.8 p-1.5">
-              <img className="h-13 w-13 pt-4" src="/images/logo.png" alt="" />
+              <img className="h-12 w-13 pt-4" src="/images/logo.png" alt="" />
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -105,18 +105,6 @@ export default function navLayout() {
             >
               CONTACTANOS
             </a>
-            <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-white p-2 px-4 transition-colors font-cambria"
-            >
-              MIS PEDIDOS
-            </a>
-            <a
-              href="#"
-              className="text-sm font-semibold rounded-lg leading-6 text-white p-2 px-4 transition-colors font-cambria"
-            >
-              ARMA TU PC
-            </a>
           </PopoverGroup>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
             <Popover className="relative">
@@ -133,18 +121,20 @@ export default function navLayout() {
               >
                 <Popover.Panel className="absolute right-0 z-10 mt-2 w-48 rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none bg-white">
                   <div className="py-1">
-                    <a
-                      href="/login"
-                      className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                    >
-                      Ingresa
-                    </a>
-                    <a
-                      href="/register"
-                      className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                    >
-                      Registrate
-                    </a>
+                      <>
+                        <a
+                          href="/login"
+                          className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                        >
+                          Ingresa
+                        </a>
+                        <a
+                          href="/register"
+                          className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                        >
+                          Registrate
+                        </a>
+                      </>
                   </div>
                 </Popover.Panel>
               </Transition>
@@ -156,7 +146,7 @@ export default function navLayout() {
               <ShoppingCartIcon className="h-7 w-7" aria-hidden="true" />
             </a>
           </div>
-        </nav>
+          </nav>
       </header>
     </>
   );

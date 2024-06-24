@@ -71,9 +71,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="pr-4 pl-7">
-        <div className="bg-black/30 border-2 border-black shadow-md p-6 text-center">
-          <h1 className="text-black font-bold text-xl">Productos Destacados</h1>
+      <div className="pr-4 pl-7 p-5">
+        <div className="bg-cyan-700 border border-black shadow-md p-6 text-center">
+          <h1 className="text-black font-bold text-xl font-cambria">Productos Destacados</h1>
           <ProdDestacados />
         </div>
       </div>

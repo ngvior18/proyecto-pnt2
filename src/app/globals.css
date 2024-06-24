@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.slick-slide>div {
+.slick-slide > div {
   margin: 0 10px;
 }
 
@@ -22,9 +22,17 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+main {
+  width: 90%;
+  margin: auto;
 }
 
 @layer utilities {
@@ -49,12 +57,12 @@ body {
   flex-direction: column;
 }
 
-.titleSection>h2 {
+.titleSection > h2 {
   font-size: 3rem;
   font-weight: bold;
 }
 
-.titleSection>.breadcrumbs>p {
+.titleSection > .breadcrumbs > p {
   color: #6d6e6e;
 }
 
@@ -114,7 +122,6 @@ body {
 .fw {
   width: 100% !important;
 }
-
 
 /* Users */
 .crudUsers {

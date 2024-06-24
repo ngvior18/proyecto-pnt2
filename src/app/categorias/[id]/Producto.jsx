@@ -1,4 +1,5 @@
 import "./productos.css";
+import Link from "next/link";
 
 export default function Producto(props) {
   return (
@@ -6,10 +7,12 @@ export default function Producto(props) {
       <div className="card producto-item__content">
         <div className="producto-item__info">
           <h3>{props.nombre}</h3>
-          <p>{props.precio}</p>
+          <p>Precio: ${props.precio}</p>
         </div>
         <div>
-          <button>Ver Detalles</button>
+          <Link href={`/categorias/${props.categoriaId}/${props._id}`}>
+            <button className="buttonCrud">Ver Detalle</button>
+          </Link>
         </div>
       </div>
     </li>

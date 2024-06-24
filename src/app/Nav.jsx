@@ -56,7 +56,7 @@ export default function navLayout() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <PopoverGroup className="hidden lg:flex">
+          <PopoverGroup className="hidden lg:flex z-1">
             <Popover className="relative">
               <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 pl-4 p-1">
                 <span className="text-white px-3 py-1  bg-cyan-700 font-cambria">
@@ -78,7 +78,7 @@ export default function navLayout() {
               >
                 <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 border">
-                    <div className="p-4">
+                    <div className="p-4 z-1">
                       {categorias.map((categoria) => (
                         <div
                           key={categoria._id}

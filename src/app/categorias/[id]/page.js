@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import ProductosList from "./ProductosList.jsx";
+import "./productos.css";
 
 export default function PageProductosCategoria({ params }) {
   const { id } = params;
@@ -22,6 +23,10 @@ export default function PageProductosCategoria({ params }) {
         })
         .catch((error) => console.log(error));
     }
-  }, []);
-  return <ProductosList productos={productos} />;
+  }, [id]);
+  return (
+    <div>
+      <ProductosList productos={productos} />
+    </div>
+  );
 }

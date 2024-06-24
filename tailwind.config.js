@@ -16,6 +16,9 @@ module.exports = {
           cambria: ['Cambria', 'serif'],
         },
       },
+       fontFamily: {
+        cambria: ['Cambria', 'serif'],
+      },
     },
     plugins: [],
   };

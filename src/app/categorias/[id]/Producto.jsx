@@ -10,7 +10,7 @@ export default function Producto(props) {
           <p>Precio: ${props.precio}</p>
         </div>
         <div>
-          <Link href={`/categorias/${props.categoriaId}/${props._id}`}>
+          <Link href={`/producto/${props._id}`}>
             <button className="buttonCrud">Ver Detalle</button>
           </Link>
         </div>

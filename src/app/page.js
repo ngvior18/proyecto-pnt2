@@ -69,15 +69,15 @@ export default function Home() {
             />
           </div>
         </div>
-
       </div>
 
       <div className="pr-4 pl-7 p-5">
         <div className="bg-cyan-700 border border-black shadow-md p-6 text-center">
-          <h1 className="text-black font-bold text-xl font-cambria">Productos Destacados</h1>
+          <h1 className="text-black font-bold text-xl font-cambria">
+            Productos Destacados
+          </h1>
           <ProdDestacados />
         </div>
-
       </div>
 
       <div className="container mx-auto py-12 ocultarMayorista">
@@ -93,9 +93,7 @@ export default function Home() {
                 />
               </div>
 
-
-              <div class="block-features__content">
-
+              <div className="block-features__content">
                 <div
                   className="block-features__title text-xl font-bold mb-2"
                   data-ar="Realizamos envios"

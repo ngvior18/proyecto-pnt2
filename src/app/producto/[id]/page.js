@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import Producto from "../Producto";
+import Producto from "../../categorias/[id]/Producto";
 import CardProduct from "./CardProduct";
 
 export default function DetalleProductoPage({ params }) {
   const { id } = params;
-  const [productos, setProductos] = useState([]);
+  const [producto, setProducto] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -20,23 +20,21 @@ export default function DetalleProductoPage({ params }) {
         .then((response) => response.json())
         .then((data) => {
           console.log("Data:", data);
-          setProductos(data);
+          setProducto(data.producto);
         })
         .catch((error) => console.log(error));
     }
   }, [id]);
 
-  //console.log(producto);
+  console.log(producto);
 
-  if (!productos) {
+  if (!producto) {
     return <div>Cargando...</div>;
   }
 
   return (
     <>
-      {productos.map((producto, index) => (
-        <CardProduct key={index} producto={producto} />
-      ))}
+      <CardProduct producto={producto} />
     </>
   );
 }

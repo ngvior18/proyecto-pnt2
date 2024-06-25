@@ -10,20 +10,24 @@ export default function PageProductosCategoria({ params }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const authToken = localStorage.getItem("authToken");
-      fetch(`http://localhost:3000/api/productos/getProductos/${id}`, {
-        method: "GET",
-        headers: {
-          Authentication: authToken,
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `http://localhost:3000/api/productos/getProductos?categoria=${id}`,
+        {
+          method: "GET",
+          headers: {
+            Authentication: authToken,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
-          setProductos(data);
+          setProductos(data.filteredProducts);
         })
         .catch((error) => console.log(error));
     }
   }, [id]);
+  console.log(productos);
   return (
     <div>
       <ProductosList productos={productos} />

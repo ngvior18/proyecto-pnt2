@@ -34,6 +34,12 @@ import getCategorias from "./categorias/useCategorias";
 export default function navLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const categorias = getCategorias();
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setToken(localStorage.getItem("authToken"));
+    }
+  });
   return (
     <>
       <header className="isolate border-b border-white-100">
@@ -121,20 +127,33 @@ export default function navLayout() {
               >
                 <Popover.Panel className="absolute right-0 z-10 mt-2 w-48 rounded-md  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none bg-white">
                   <div className="py-1">
+                    <div>
                       <>
-                        <a
-                          href="/login"
-                          className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                        >
-                          Ingresa
-                        </a>
-                        <a
-                          href="/register"
-                          className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                        >
-                          Registrate
-                        </a>
+                        {token ? (
+                          <a
+                            href="/perfil"
+                            className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                          >
+                            Ver Perfil
+                          </a>
+                        ) : (
+                          <>
+                            <a
+                              href="/login"
+                              className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                            >
+                              Ingresa
+                            </a>
+                            <a
+                              href="/register"
+                              className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                            >
+                              Registrate
+                            </a>
+                          </>
+                        )}
                       </>
+                    </div>
                   </div>
                 </Popover.Panel>
               </Transition>
@@ -142,11 +161,9 @@ export default function navLayout() {
             <a
               href="#"
               className="ml-4 text-sm font-semibold leading-6 text-cyan-700 p-1 border border-transparent rounded-lg hover:border-white transition-colors"
-            >
-              <ShoppingCartIcon className="h-7 w-7" aria-hidden="true" />
-            </a>
+            ></a>
           </div>
-          </nav>
+        </nav>
       </header>
     </>
   );

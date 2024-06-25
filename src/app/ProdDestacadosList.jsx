@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 
 export default function ProdDestacadosList(props) {
   const settings = {
@@ -20,9 +21,11 @@ export default function ProdDestacadosList(props) {
               <div className="flex flex-col justify-center items-center gap-4 p-4">
                 <p className="text-xl font-semibold">{p.nombre}</p>
                 <p>{p.descripcion}</p>
-                <button className="bg-cyan-700 text-white text-lg px-10 py-1 rounded-xl">
-                  Ver detalle
-                </button>
+                <Link href={`/producto/${p._id}`}>
+                  <button className="bg-cyan-700 text-white text-lg px-10 py-1 rounded-xl">
+                    Ver detalle
+                  </button>
+                </Link>
               </div>
             </div>
           );

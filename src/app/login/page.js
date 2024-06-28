@@ -37,6 +37,7 @@ export default function PageLogin() {
 
         // Opcional: Guardar el token en localStorage si estás en el cliente
         if (typeof window !== "undefined") {
+          localStorage.clear();
           localStorage.setItem("authToken", authToken);
           console.log("Token guardado en localStorage.");
         }

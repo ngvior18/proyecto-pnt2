@@ -30,6 +30,7 @@ export default function PageLogin() {
         const adminAuthToken = data.token;
 
         if (typeof window !== "undefined") {
+          localStorage.clear();
           localStorage.setItem("adminAuthToken", adminAuthToken);
           console.log("adminAuthToken guardado en localStorage.");
         }

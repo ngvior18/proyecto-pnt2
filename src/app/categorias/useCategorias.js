@@ -7,7 +7,7 @@ export default function useCategorias() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const authToken = localStorage.getItem("authToken");
-
+      
       fetch("http://localhost:3000/api/categorias/getCategorias", {
         method: "GET",
         headers: {

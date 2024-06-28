@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function PageLogin() {
-  const [token, setToken] = useState(null); // Estado para almacenar el token
+  const router = useRouter();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -16,32 +17,32 @@ export default function PageLogin() {
     try {
       const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
-      }
-
+      // if (!response.ok) {
+      //   throw new Error(`HTTP Error: ${response.status}`);
+      // }
       const data = await response.json();
 
-      if (data.success === false) {
-        console.error("Error de logeo:", data.error);
-      } else {
+      if (response.status == 401) {
+        // console.error("Error de logeo:", data.error);
+        //Mostrar pop-up de error de logueo
+        console.error(data.error);
+        toast.error(data.error);
+      }
+      if (response.status == 200) {
         const authToken = data.token;
-
-        // Guardar el token en el estado local
-        setToken(authToken);
 
         // Opcional: Guardar el token en localStorage si estás en el cliente
         if (typeof window !== "undefined") {
+          localStorage.clear();
           localStorage.setItem("authToken", authToken);
           console.log("Token guardado en localStorage.");
         }
-        redirect(`/`);
+        toast.success("Logueo exitoso!");
+        router.push(`/`);
         // Redirigir a la página principal u otra página después del inicio de sesión
         // router.push("/"); // Si estás usando useRouter de Next.js
       }
@@ -65,7 +66,7 @@ export default function PageLogin() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleLogin}>
+          <form className="space-y-6" onSubmit={handleLogin} method="POST">
             <div>
               <label
                 htmlFor="email"

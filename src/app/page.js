@@ -153,7 +153,7 @@ export default function Home() {
                   alt="customer-support--v1"
                 />
               </div>
-              <div class="block-features__content">
+              <div className="block-features__content">
                 <div
                   className="block-features__title text-xl font-bold mb-2"
                   data-ar="Soporte"

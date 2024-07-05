@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
       }
     };
 
-    checkToken();
+    // checkToken();
   }, [router]);
 
   return (

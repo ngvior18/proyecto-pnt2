@@ -26,7 +26,7 @@ export default function PageLogin() {
       if (response.status == 401) {
         toast.error(data.error);
       }
-      if (response.status == 200) {
+      if (response.status == 202) {
         const adminAuthToken = data.token;
 
         if (typeof window !== "undefined") {

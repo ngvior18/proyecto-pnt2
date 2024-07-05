@@ -17,7 +17,7 @@ export default function ProdDestacados(props) {
         },
       })
         .then((response) => response.json())
-        .then((data) => setProdDestacados(data.filteredProducts))
+        .then((data) => setProdDestacados(data.products))
         .catch((error) => console.error(error));
     }
   }, []);

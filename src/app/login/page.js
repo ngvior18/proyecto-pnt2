@@ -13,7 +13,7 @@ export default function PageLogin() {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-
+    
     try {
       const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
@@ -25,14 +25,14 @@ export default function PageLogin() {
       //   throw new Error(`HTTP Error: ${response.status}`);
       // }
       const data = await response.json();
-
+      console.log(response.status);
       if (response.status == 401) {
         // console.error("Error de logeo:", data.error);
         //Mostrar pop-up de error de logueo
         console.error(data.error);
         toast.error(data.error);
       }
-      if (response.status == 200) {
+      if (response.status == 202) {
         const authToken = data.token;
 
         // Opcional: Guardar el token en localStorage si estás en el cliente

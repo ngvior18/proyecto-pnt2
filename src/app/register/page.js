@@ -1,25 +1,56 @@
-import { redirect } from "next/navigation";
+"use client";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function PageSingup() {
-  async function handlerSingup(formData) {
-    "use server";
+  const router = useRouter();
+  // async function handlerSingup(formData) {
+  //   "use server";
+  //   const user = {
+  //     nombre: formData.get("nombre"),
+  //     email: formData.get("email"),
+  //     password: formData.get("password"),
+  //   };
+
+  //   const response = await fetch("http://localhost:3000/api/register", {
+  //     method: "POST",
+  //     headers: { "Content-type": "application/json" },
+  //     body: JSON.stringify(user),
+  //   });
+  //   const data = await response.json();
+  //   if (response.status === 400) {
+  //     toast.error(data.message);
+  //   }
+  //   if (response.status === 201) {
+  //     toast.success(data.message);
+  //     redirect(`/login`);
+  //   }
+
+  // }
+
+  const handlerSingup = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
     const user = {
       nombre: formData.get("nombre"),
       email: formData.get("email"),
       password: formData.get("password"),
     };
-
-    const request = await fetch(
-      "http://localhost:3000/api/register",
-      {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(user),
-      }
-    );
-
-    redirect(`/login`);
-  }
+    const response = await fetch("http://localhost:3000/api/register", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
+    if (response.status === 400) {
+      toast.error(data.message);
+    }
+    if (response.status === 201) {
+      toast.success(data.message);
+      router.push(`/login`);
+    }
+  };
 
   return (
     <>
@@ -36,11 +67,12 @@ export default function PageSingup() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action={handlerSingup} method="POST">
+          <form className="space-y-6" onSubmit={handlerSingup} method="POST">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-white-900">
+                className="block text-sm font-medium leading-6 text-white-900"
+              >
                 Nombre
               </label>
               <div className="mt-2">
@@ -56,7 +88,8 @@ export default function PageSingup() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-white-900">
+                className="block text-sm font-medium leading-6 text-white-900"
+              >
                 Email
               </label>
               <div className="mt-2">
@@ -75,7 +108,8 @@ export default function PageSingup() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-white-900">
+                  className="block text-sm font-medium leading-6 text-white-900"
+                >
                   Password
                 </label>
               </div>
@@ -94,7 +128,8 @@ export default function PageSingup() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-cyan-600 font-cambria px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+                className="flex w-full justify-center rounded-md bg-cyan-600 font-cambria px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+              >
                 Ingresar
               </button>
             </div>

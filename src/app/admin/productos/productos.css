@@ -50,12 +50,12 @@ h1 {
   background-color: #808080;
 }
 
-.product-table button {
+.product-table a {
   margin-right: 5px;
   padding: 5px 10px;
   cursor: pointer;
 }
 
-.product-table button:hover {
+.product-table a:hover {
   background-color: #444444;
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import AdminProductosList from "./AdminProductosList";
+import AdminProductosList from "./AdminProductosList.jsx";
 
 export default function PageProductosAdmin() {
   const [productos, setProductos] = useState([]);
@@ -34,20 +34,20 @@ export default function PageProductosAdmin() {
       }
     };
     fetchData();
-    //hacer jsx ProductsList y botones para agregar editar y borrar.
   }, []);
+  // console.log(productos, "listado prods");
   return (
     <>
       <div>
         <h1 className="">Productos</h1>
       </div>
       <div className="flex justify-end p-4">
-        <button
+        <a
           href={`/admin/productos/agregar`}
           className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-2 px-4 ml-2 rounded border border-white"
         >
           Agregar Producto
-        </button>
+        </a>
       </div>
       <div>
         <AdminProductosList productos={productos} />

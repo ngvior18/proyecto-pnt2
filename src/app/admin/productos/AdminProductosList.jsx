@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './productos.css'
+import "./productos.css";
 
 export default function AdminProductosList(props) {
   const truncateText = (text, maxLength) => {
@@ -30,7 +30,6 @@ export default function AdminProductosList(props) {
   const borrarCategoria = () => {
     //hacer pop up de si quiere borrar categoria y si pone ok mandar endpoint de borrar con id
   };
-
   return (
     <table className="product-table">
       <thead>
@@ -54,11 +53,9 @@ export default function AdminProductosList(props) {
             <td>{producto.destacado ? "Sí" : "No"}</td>
             <td>{categoriaToName(producto.categoriaId)}</td>
             <td>
-              <button href={`/admin/productos/${producto._id}`}>Ver</button>
-              <button href={`/admin/productos/editar/${producto._id}`}>
-                Editar
-              </button>
-              <button onClick={borrarCategoria}>Borrar</button>
+              <a href={`/admin/productos/${producto._id}`}>Ver</a>
+              <a href={`/admin/productos/editar/${producto._id}`}>Editar</a>
+              <a onClick={borrarCategoria}>Borrar</a>
             </td>
           </tr>
         ))}

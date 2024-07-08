@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ token: authToken }),
+              body: JSON.stringify({ token: adminAuthToken }),
             }
           );
 
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
       }
     };
 
-    // checkToken();
+    checkToken();
   }, [router]);
 
   return (

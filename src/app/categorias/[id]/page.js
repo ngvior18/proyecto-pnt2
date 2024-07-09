@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation.js";
 import { useState, useEffect } from "react";
 import ProductosList from "./ProductosList.jsx";
-import "./productos.css";
 import toast from "react-hot-toast";
 
 export default function PageProductosCategoria({ params }) {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import AdminProductosList from "./AdminProductosList.jsx";
+import redirectUnauthorized from "../utils/redirectUnauthorized.js";
 
 export default function PageProductosAdmin() {
   const [productos, setProductos] = useState([]);
@@ -24,7 +25,12 @@ export default function PageProductosAdmin() {
           );
 
           const data = await response.json();
-          console.log(data);
+          if (response.status == 401) {
+            redirectUnauthorized(data.message);
+            return;
+          }
+
+          console.log(data, "Resp prods");
           // validar en el listado que success sea true, caso contrario mostrar que no existen productos todavia
           setProductos(data.products);
         } catch (error) {

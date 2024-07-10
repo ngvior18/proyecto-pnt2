@@ -29,14 +29,16 @@ export default function PageProductosCategoria({ params }) {
           const data = await response.json();
 
           if (response.status === 404) {
-            toast.error(data.message);
-            router.push("/");
+            // toast.error(data.message);
+            // router.push("/");
+            console.log(data, "404");
+            return;
           }
           if (response.status === 200) {
             setProductos(data.products);
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       };
       fetchData();
@@ -58,6 +60,18 @@ export default function PageProductosCategoria({ params }) {
     }
   }, [id]);
   console.log(productos, "Productos");
+
+  if (productos.length == 0) {
+    return (
+      <>
+        <p className="text-center text-blue-400">
+          {" "}
+          No hay productos en esta categoría
+        </p>
+      </>
+    );
+  }
+
   return (
     <div>
       <ProductosList productos={productos} />

@@ -17,7 +17,7 @@ export default function ProdDestacadosList(props) {
       <Slider {...settings}>
         {props.Prods.map((p) => {
           return (
-            <div className="bg-white h-[450px] text-black rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-gray-200 h-[300px] text-black rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <div className="flex flex-col justify-between items-center gap-4 p-4 h-full">
                 <div className="flex-1 w-full flex flex-col items-center pt-4">
                   <p className="text-2xl font-bold pt-4 pb-8">{p.nombre}</p>

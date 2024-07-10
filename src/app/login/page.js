@@ -29,8 +29,8 @@ export default function PageLogin() {
       if (response.status == 401) {
         // console.error("Error de logeo:", data.error);
         //Mostrar pop-up de error de logueo
-        console.error(data.error);
-        toast.error(data.error);
+        console.error(data);
+        toast.error(data.message);
       }
       if (response.status == 202) {
         const authToken = data.token;

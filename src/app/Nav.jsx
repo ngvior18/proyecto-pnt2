@@ -93,6 +93,15 @@ export default function navLayout() {
                   <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                     <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 border">
                       <div className="p-4 z-1">
+                        <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-cyan-700">
+                          <a
+                            href={`/categorias`}
+                            className="block font-semibold text-cyan-500 font-cambria"
+                          >
+                            Ver todos los productos
+                            <span className="absolute inset-0" />
+                          </a>
+                        </div>
                         {categorias.map((categoria) => (
                           <div
                             key={categoria._id}

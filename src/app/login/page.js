@@ -34,12 +34,14 @@ export default function PageLogin() {
       }
       if (response.status == 202) {
         const authToken = data.token;
+        const userId = data._id;
 
         // Opcional: Guardar el token en localStorage si estás en el cliente
         if (typeof window !== "undefined") {
           localStorage.clear();
           localStorage.setItem("authToken", authToken);
-          console.log("Token guardado en localStorage.");
+          localStorage.setItem("userId", userId);
+          console.log("Token e ID guardado en localStorage.");
         }
         toast.success("Logueo exitoso!");
         router.push(`/`);

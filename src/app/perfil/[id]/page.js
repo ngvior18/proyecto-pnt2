@@ -1,15 +1,15 @@
 "use client";
+import Usuario from "./Usuario";
 import { useState, useEffect } from "react";
-import CardProduct from "./[id]/CardProduct";
 
-export default function BuscadorProductoPage({ params }) {
-  const { nombre } = params;
-  const [producto, setProducto] = useState(null);
+export default function PerfilPage({ params }) {
+  const { id } = params;
+  const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const authToken = localStorage.getItem("authToken");
-      fetch(`http://localhost:3000/api/productos/getProductos/${nombre}`, {
+      fetch(`http://localhost:3000/api/usuarios/getUsuarios/${id}`, {
         method: "GET",
         headers: {
           Authentication: authToken,
@@ -19,21 +19,21 @@ export default function BuscadorProductoPage({ params }) {
         .then((response) => response.json())
         .then((data) => {
           console.log("Data:", data);
-          setProducto(data.producto);
+          setUsuario(data.usuario);
         })
         .catch((error) => console.log(error));
     }
-  }, [nombre]);
+  }, [id]);
 
-  console.log(producto);
+  console.log(usuario);
 
-  if (!producto) {
-    return <div>Cargando...</div>;
+  if (!usuario) {
+    return <div>Loading...</div>;
   }
 
   return (
     <>
-      <CardProduct producto={producto} />
+      <Usuario usuario={usuario}/>
     </>
   );
 }

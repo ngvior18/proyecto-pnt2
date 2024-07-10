@@ -7,74 +7,9 @@ export default function Home() {
 
   return (
     <div className="bg-gray-100">
-      <div className="py-6">
-        <form className="max-w-7xl mx-auto flex">
-          <input
-            type="text"
-            className="flex-grow border border-gray-300 rounded-l-md p-2 text-gray-900"
-            placeholder="Buscar productos..."
-          />
-
-          <button
-            type="submit"
-            className="bg-cyan-600 text-white p-2 rounded-r-md hover:bg-cyan-800"
-          >
-            Buscar
-          </button>
-        </form>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex">
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/categoria_auricular.jpg"
-              alt="Transistor"
-            />
-          </div>
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/categoria_gabinete.jpg"
-              alt="Transistor"
-            />
-          </div>
-
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/caategoria_monitor.jpg"
-              alt="Tuple"
-            />
-          </div>
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/categoria_mouse.jpg"
-              alt="SavvyCal"
-            />
-          </div>
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/categoria_placa-de-video.jpg"
-              alt="Statamic"
-            />
-          </div>
-          <div className="border border-grey bg-white flex items-center justify-center p-4 flex-1">
-            <img
-              className="max-h-12 w-full object-contain"
-              src="/images/categoria_teclado.jpg"
-              alt="Statamic"
-            />
-          </div>
-        </div>
-      </div>
-
       <div className="pr-4 pl-7 p-5">
         <h1 className="text-black font-bold text-xl font-cambria text-center pt-8">
-          PRODUCTOS DESTACADOS
+          NUESTROS PRODUCTOS DESTACADOS
         </h1>
         <ProdDestacados />
       </div>

@@ -35,13 +35,16 @@ export default function navLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const categorias = getCategorias();
   const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [adminToken, setAdminToken] = useState(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setToken(localStorage.getItem("authToken"));
       setAdminToken(localStorage.getItem("adminAuthToken"));
+      setUserId(localStorage.getItem("userId"));
     }
   });
+
 
   const handleLogOut = () => {
     localStorage.clear();
@@ -171,11 +174,12 @@ export default function navLayout() {
                         {token || adminToken ? (
                           <>
                             <a
-                              href="/perfil"
+                              href={`/perfil/${userId}`}
                               className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
                             >
                               Ver Perfil
                             </a>
+                           
                             <a
                               onClick={handleLogOut}
                               href={token ? "/login" : "/admin/login"}

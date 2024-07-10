@@ -7,11 +7,16 @@ export default function Home() {
 
   return (
     <div className="bg-gray-100">
-      <div className="pr-4 pl-7 p-5">
-        <h1 className="text-black font-bold text-xl font-cambria text-center pt-8">
-          NUESTROS PRODUCTOS DESTACADOS
+         <div className="container mx-auto px-4 py-12 pt-12">
+        <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-8">
+          COMPONENTS ORT
         </h1>
-        <ProdDestacados />
+        <div className="pr-4 pl-7 p-5">
+          <h2 className="text-xl font-bold text-black text-center mb-9 font-cambria ">
+            NUESTROS PRODUCTOS DESTACADOS
+          </h2>
+          <ProdDestacados />
+        </div>
       </div>
 
       <div className="container mx-auto py-12 ocultarMayorista">

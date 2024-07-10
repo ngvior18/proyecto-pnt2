@@ -61,7 +61,7 @@ export default function ProdDestacados(props) {
   }
 
   return (
-    <div className="w-3/4 m-auto">
+    <div className="w-3/4 m-auto pt-12 pb-12">
       <ProdDestacadosList Prods={prodDestacados} />
     </div>
   );

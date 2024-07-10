@@ -43,13 +43,15 @@ export default function VerProducto({
           <span className="font-semibold text-black">Nombre:</span> {nombre}
         </div>
         <div className="mb-4 text-black">
-          <span className="font-semibold text-black">Descripción:</span> {descripcion}
+          <span className="font-semibold text-black">Descripción:</span>{" "}
+          {descripcion}
         </div>
         <div className="mb-4 text-black">
           <span className="font-semibold text-black">Precio:</span> ${precio}
         </div>
         <div className="mb-4 text-black">
-          <span className="font-semibold text-black">Stock:</span> {stock ? "Sí" : "No"}
+          <span className="font-semibold text-black">Stock:</span>{" "}
+          {stock ? "Sí" : "No"}
         </div>
         <div className="mb-4 text-black">
           <span className="font-semibold text-black">Destacado:</span>{" "}
@@ -68,7 +70,7 @@ export default function VerProducto({
           Volver al listado
         </button>
         <button
-          onClick={() => router.push(`/admin/productos/editar/${producto._id}`)}
+          onClick={() => router.push(`/admin/productos/editar/${id}`)}
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
           Editar producto

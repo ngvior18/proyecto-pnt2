@@ -1,37 +1,56 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import { redirectUnauthorized, verifyAdminAuthToken } from "../../utils";
 
-export default function PageAgregarProducto() {
+import {
+  getAdminAuthToken,
+  redirectUnauthorized,
+  verifyAdminAuthToken,
+} from "@/app/admin/utils";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
+export default function EditarProducto({
+  nombre: initialNombre,
+  descripcion: initialDescripcion,
+  precio: initialPrecio,
+  stock: initialStock,
+  destacado: initialDestacado,
+  categoriaId: initialCategoriaId,
+  id,
+}) {
   const router = useRouter();
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [stock, setStock] = useState(true);
-  const [destacado, setDestacado] = useState(false);
-  const [categoria, setCategoria] = useState("");
+  const [nombre, setNombre] = useState(initialNombre);
+  const [descripcion, setDescripcion] = useState(initialDescripcion);
+  const [precio, setPrecio] = useState(initialPrecio);
+  const [stock, setStock] = useState(initialStock);
+  const [destacado, setDestacado] = useState(initialDestacado);
+  const [categoria, setCategoria] = useState(initialCategoriaId);
+
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     if (verifyAdminAuthToken(router)) {
-      //seteo de categorias para select
-      fetch(`http://localhost:3000/api/categorias/getCategorias`)
-        .then((result) => result.json())
-        .then((data) => setCategorias(data));
+      const fetchCategorias = async () => {
+        const response = await fetch(
+          `http://localhost:3000/api/categorias/getCategorias`
+        );
+        const c = await response.json();
+        setCategorias(c);
+      };
+      fetchCategorias();
     }
-  }, []);
+  }, [router]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     if (nombre.length < 10 || descripcion.length < 20 || precio === "") {
       toast.error("Faltan completar datos");
       return;
     }
 
-    const nuevoProducto = {
+    const productoEditado = {
+      _id: id,
       nombre,
       descripcion,
       precio: precio.toString(),
@@ -41,38 +60,35 @@ export default function PageAgregarProducto() {
     };
 
     try {
-      if (typeof window !== "undefined") {
-        const adminAuthToken = localStorage.getItem("adminAuthToken");
-
-        const result = await fetch(
-          `http://localhost:3000/api/productos/createProducto`,
-          {
-            method: "POST",
-            headers: {
-              Authentication: adminAuthToken,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(nuevoProducto),
-          }
-        );
-        const data = await result.json();
-
-        if (result.status == 401) {
-          redirectUnauthorized(data.message, router);
+      const adminAuthToken = getAdminAuthToken();
+      const response = await fetch(
+        `http://localhost:3000/api/productos/editProducto`,
+        {
+          method: "PUT",
+          headers: {
+            Authentication: adminAuthToken,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productoEditado),
         }
+      );
+      const data = await response.json();
 
-        if (result.status == 400) {
-          toast.error(data.message);
-          return;
-        }
-        if (result.status == 201) {
-          toast.success(data.message);
-          router.push("/admin/productos");
-        }
+      if (response.status === 401) {
+        redirectUnauthorized(data.message, router);
+      }
+
+      if (response.status === 400 || response.status === 404) {
+        toast.error(data.message);
+        return;
+      }
+      if (response.status === 200) {
+        toast.success(data.message);
+        router.push("/admin/productos");
       }
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
-      toast.error("Error al agregar el producto.");
+      toast.error("Error al editar el producto.");
     }
   };
 
@@ -82,7 +98,7 @@ export default function PageAgregarProducto() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Agregar Producto</h1>
+      <h1 className="text-2xl font-bold mb-4">Editar Producto</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-gray-700">Nombre</label>
@@ -160,7 +176,7 @@ export default function PageAgregarProducto() {
             Cancelar
           </button>
           <button type="submit" className="bg-cyan-700 text-white p-2 rounded">
-            Agregar Producto
+            Editar Producto
           </button>
         </div>
       </form>

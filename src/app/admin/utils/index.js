@@ -1,7 +1,15 @@
 import toast from "react-hot-toast";
 
+export function getAdminAuthToken() {
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("adminAuthToken");
+    return token;
+  }
+}
+
 export function redirectUnauthorized(message, router) {
-  toast.error(message);
+  console.error(message, "Error");
+  toast.error("Token vencido, ingrese denuevo");
   if (typeof window !== "undefined") {
     router.push("/admin/login");
   }

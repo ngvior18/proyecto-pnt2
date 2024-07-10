@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./productos.css";
+import { useRouter } from "next/navigation";
 
 export default function AdminProductosList(props) {
+  const router = useRouter();
+
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + "...";

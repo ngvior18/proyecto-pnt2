@@ -42,6 +42,11 @@ export default function navLayout() {
       setAdminToken(localStorage.getItem("adminAuthToken"));
     }
   });
+
+  const handleLogOut = () => {
+    localStorage.clear();
+  };
+
   return (
     <>
       <header className="isolate border-b border-white-100">
@@ -155,12 +160,21 @@ export default function navLayout() {
                     <div>
                       <>
                         {token || adminToken ? (
-                          <a
-                            href="/perfil"
-                            className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                          >
-                            Ver Perfil
-                          </a>
+                          <>
+                            <a
+                              href="/perfil"
+                              className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                            >
+                              Ver Perfil
+                            </a>
+                            <a
+                              onClick={handleLogOut}
+                              href={token ? "/login" : "/admin/login"}
+                              className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                            >
+                              Cerrar sesion
+                            </a>
+                          </>
                         ) : (
                           <>
                             <a

@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
           const response = await userResponse.json();
           if (!response.success) {
             toast.error(response.error);
+            localStorage.clear();
             router.push("/login");
           }
         }
@@ -45,13 +46,14 @@ export default function RootLayout({ children }) {
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ token: authToken }),
+              body: JSON.stringify({ token: adminAuthToken }),
             }
           );
 
           const response = await adminResponse.json();
           if (!response.success) {
             toast.error(response.error);
+            localStorage.clear();
             router.push("/admin/login");
           }
         }

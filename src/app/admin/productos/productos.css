@@ -1,0 +1,61 @@
+/* .agregar-prod {
+  width: 100px;
+  margin: 10px;
+  background: #0e7490;
+  float: right;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.agregar-prod button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.agregar-prod button:hover {
+  background-color: #169ec4;
+} */
+
+h1 {
+  font-size: 30px;
+  width: 750px;
+  margin: 10px auto;
+  background: #0e7490;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 100px;
+}
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.product-table th {
+  background-color: #0e7490;
+  text-align: left;
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: #131212;
+}
+
+.product-table tbody tr:hover {
+  background-color: #808080;
+}
+
+.product-table a {
+  margin-right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.product-table a:hover {
+  background-color: #444444;
+}

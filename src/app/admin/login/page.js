@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function PageLogin() {
@@ -24,7 +25,7 @@ export default function PageLogin() {
       const data = await response.json();
 
       if (response.status == 401) {
-        toast.error(data.error);
+        toast.error(data.message);
       }
       if (response.status == 202) {
         const adminAuthToken = data.token;
@@ -37,7 +38,9 @@ export default function PageLogin() {
 
         toast.success("Logueo exitoso al administrador");
         //setear adminAuthToken
-        router.push("/admin/");
+
+        router.push("/admin");
+        // window.location.reload();
       }
       if (response.status == 500) {
         console.error("Error interno del servidor");
@@ -47,7 +50,10 @@ export default function PageLogin() {
       // TODO 2: Guardar el token en el localstorage
 
       // TODO 3 redireccionar a la pagina original, antes de pedir credenciales
-    } catch (error) {}
+      
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <>

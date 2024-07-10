@@ -14,11 +14,10 @@ export default function Home() {
             className="flex-grow border border-gray-300 rounded-l-md p-2 text-gray-900"
             placeholder="Buscar productos..."
           />
-         
+
           <button
             type="submit"
             className="bg-cyan-600 text-white p-2 rounded-r-md hover:bg-cyan-800"
-            
           >
             Buscar
           </button>
@@ -74,10 +73,10 @@ export default function Home() {
       </div>
 
       <div className="pr-4 pl-7 p-5">
-      <h1 className="text-black font-bold text-xl font-cambria text-center pt-8">
-  PRODUCTOS DESTACADOS
-</h1>
-          <ProdDestacados />
+        <h1 className="text-black font-bold text-xl font-cambria text-center pt-8">
+          PRODUCTOS DESTACADOS
+        </h1>
+        <ProdDestacados />
       </div>
 
       <div className="container mx-auto py-12 ocultarMayorista">

@@ -19,7 +19,7 @@ export default function PerfilPage({ params }) {
         .then((response) => response.json())
         .then((data) => {
           console.log("Data:", data);
-          setUsuario(data.usuario);
+          setUsuario(data.result);
         })
         .catch((error) => console.log(error));
     }
